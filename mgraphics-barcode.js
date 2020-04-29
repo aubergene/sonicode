@@ -18,7 +18,7 @@ mgraphics.autofill = 0
 mgraphics.autosketch = 0
 
 var barcodeBits = 101 // Length of the barcode in bits (including padding)
-var bars = [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var bars = [0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0];
 var hasBars // don't do anything when we have no barcode
 var ratio // ratio of width to height, we draw everything relative
 var marker = 0 // position of scan line marker as a float
@@ -38,6 +38,10 @@ function paint() {
   var l
 
   with (mgraphics) {
+    set_source_rgb(1, 0.999, 1)
+    rectangle(-ratio, 1, ratio * 2, 2)
+    fill()
+
     if (!hasBars) return
 
     set_source_rgb(0, 0, 0)
